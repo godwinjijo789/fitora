@@ -180,11 +180,11 @@ export const Home: React.FC = () => {
           <img
             src="https://images.unsplash.com/photo-1517838277536-f5f99be501cd?q=80&w=1920&auto=format&fit=crop"
             alt="Pro Gym Workout"
-            className="w-full h-full object-cover opacity-35 object-center scale-105 filter saturate-75 brightness-75 contrast-125 transition-transform"
+            className="w-full h-full object-cover opacity-70 sm:opacity-35 object-center scale-105 filter saturate-75 brightness-75 contrast-125 transition-transform"
             referrerPolicy="no-referrer"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#070708] via-[#070708]/85 to-transparent" />
-          <div className="absolute inset-0 bg-gradient-to-r from-[#070708] via-transparent to-[#070708]/40" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#070708] via-[#070708]/75 to-transparent sm:via-[#070708]/85" />
+          <div className="absolute inset-0 bg-gradient-to-r hero-bg-gradient from-[#070708]/90 via-transparent to-[#070708]/20 sm:from-[#070708] sm:to-[#070708]/40" />
         </div>
 
         {/* Hero Content */}

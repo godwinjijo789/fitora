@@ -159,7 +159,7 @@ html.light {
     background: linear-gradient(to top, rgba(251, 252, 255, 0.85), transparent) !important;
   }
 
-  & section:first-child .bg-gradient-to-r {
+  & section:first-child .hero-bg-gradient {
     background: linear-gradient(to right, rgba(251, 252, 255, 0.7), transparent, rgba(251, 252, 255, 0.3)) !important;
   }
 
