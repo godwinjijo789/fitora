@@ -62,7 +62,7 @@ export const AdminLogin: React.FC = () => {
 
         <div className="mt-8 pt-6 border-t border-zinc-900 flex items-center justify-center gap-2 text-[10px] text-zinc-600 font-mono tracking-wider">
           <Dumbbell className="w-4 h-4 text-zinc-700" />
-          <span>FITORA MANAGEMENT SYSTEM</span>
+          <span>FITFORCE BY JIJO MANAGEMENT SYSTEM</span>
         </div>
       </motion.div>
     </div>

@@ -29,7 +29,7 @@ import {
 } from 'lucide-react';
 import { Enquiry, HomepageContent } from '../types';
 import { motion, AnimatePresence } from 'motion/react';
-import { FitoraLogo } from '../components/FitoraLogo';
+import { FitForceLogo } from '../components/FitForceLogo';
 import { transformGoogleDriveUrl } from '../utils';
 
 const compressAndGetBase64 = (file: File, maxWidth = 1000, maxHeight = 1000, quality = 0.7): Promise<string> => {
@@ -84,7 +84,7 @@ export const Dashboard: React.FC = () => {
     id: 'jijo_trainer',
     name: 'Mr. Delwin Jijo Coach',
     experience: '3+ Years Elite Strength Coaching',
-    aboutText: 'Welcome! My name is Delwin Jijo R. K, and I am the founder and head performance coach at FITORA. For nearly a decade, I have focused on dismantling typical corporate fitness misconceptions, replacing them with customized, periodized strength training models that generate permanent physical changes.',
+    aboutText: 'Welcome! My name is Delwin Jijo R. K, and I am the founder and head performance coach at FitForce By Jijo. For nearly a decade, I have focused on dismantling typical corporate fitness misconceptions, replacing them with customized, periodized strength training models that generate permanent physical changes.',
     imageUrl: ''
   });
 
@@ -316,7 +316,7 @@ export const Dashboard: React.FC = () => {
             id: docSnap.id,
             name: data.name || 'Mr. Delwin Jijo Coach',
             experience: data.experience || '3+ Years Elite Coaching',
-            aboutText: data.aboutText || 'Welcome! My name is Delwin Jijo, and I am the founder and head performance coach at FITORA.',
+            aboutText: data.aboutText || 'Welcome! My name is Delwin Jijo, and I am the founder and head performance coach at FitForce By Jijo.',
             imageUrl: data.imageUrl || 'https://images.unsplash.com/photo-1568602471122-7832951cc4c5?q=80&w=800&auto=format&fit=crop'
           });
         }
@@ -648,9 +648,9 @@ export const Dashboard: React.FC = () => {
       {/* Tab/Sidebar segment */}
       <aside className="w-full md:w-64 bg-black border-r border-zinc-900 flex flex-col p-6 gap-6 md:min-h-screen flex-shrink-0">
         <div className="flex items-center gap-2 pb-6 border-b border-zinc-900">
-          <FitoraLogo iconClassName="w-10 h-10" showText={false} />
+          <FitForceLogo iconClassName="w-10 h-10" showText={false} />
           <div>
-            <h1 className="text-sm font-black tracking-tighter text-white">FITORA ADMIN</h1>
+            <h1 className="text-sm font-black tracking-tighter text-white">FITFORCE BY JIJO ADMIN</h1>
             <p className="text-[9px] font-mono tracking-widest text-[#dc2626] uppercase">Active Session</p>
           </div>
         </div>
@@ -758,7 +758,7 @@ export const Dashboard: React.FC = () => {
               <span className="text-red-500 font-mono text-[10px] font-black tracking-widest uppercase mb-1">
                 SNAP STATISTICS
               </span>
-              <h2 className="text-3xl font-black text-white">FITORA OVERVIEW</h2>
+              <h2 className="text-3xl font-black text-white">FITFORCE BY JIJO OVERVIEW</h2>
             </div>
 
             {/* Snapshot cards container */}

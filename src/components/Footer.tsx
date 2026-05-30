@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { Dumbbell, Instagram, Mail, Phone, MapPin } from 'lucide-react';
 import { doc, onSnapshot } from 'firebase/firestore';
 import { db } from '../firebase';
-import { FitoraLogo } from './FitoraLogo';
+import { FitForceLogo } from './FitForceLogo';
 
 export const Footer: React.FC = () => {
   const [phone, setPhone] = useState('+91 73585 70962');
@@ -36,7 +36,7 @@ export const Footer: React.FC = () => {
         {/* Brand Section */}
         <div className="flex flex-col gap-4">
           <Link to="/" className="flex items-center gap-1 group cursor-pointer" id="logo-link-footer">
-            <FitoraLogo showText={true} iconClassName="w-10 h-10" textSize="text-lg font-black tracking-tighter text-white" />
+            <FitForceLogo showText={true} iconClassName="w-10 h-10" textSize="text-lg font-black tracking-tighter text-white" />
           </Link>
           <p className="text-sm leading-relaxed text-zinc-500">
             Premium strength and holistic body transformations. Redefine your limits with results-driven coaching customized to your busy lifestyle.
@@ -106,7 +106,7 @@ export const Footer: React.FC = () => {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 border-t border-zinc-950 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs">
         <p className="text-zinc-600 font-medium">
-          © {new Date().getFullYear()} FITORA Brand. All Rights Reserved. Coached by Mr. Delwin Jijo Coach.
+          © {new Date().getFullYear()} FitForce By Jijo Brand. All Rights Reserved. Coached by Mr. Delwin Jijo Coach.
         </p>
 
         {/* Support -> Admin Login demanded below the footer */}

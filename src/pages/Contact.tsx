@@ -80,7 +80,7 @@ export const Contact: React.FC = () => {
       await setDoc(docRef, payload);
 
       // 2. Trigger automated Email Notification to admin
-      const emailSubject = `New FITORA Enquiry: ${formData.name.trim()}`;
+      const emailSubject = `New FitForce By Jijo Enquiry: ${formData.name.trim()}`;
       const emailBody = `Hi Coach Delwin,
 
 A new coaching registration/enquiry has been submitted.

@@ -4,7 +4,7 @@ import { Dumbbell, Menu, X, ShieldAlert, Sun, Moon } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
 import { useTheme } from '../context/ThemeContext';
 import { motion, AnimatePresence } from 'motion/react';
-import { FitoraLogo } from './FitoraLogo';
+import { FitForceLogo } from './FitForceLogo';
 
 export const Navbar: React.FC = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -39,7 +39,7 @@ export const Navbar: React.FC = () => {
           <div className="flex items-center justify-between h-20">
             {/* Logo */}
             <Link to="/" className="flex items-center gap-1 group cursor-pointer" id="logo-link">
-              <FitoraLogo showText={true} iconClassName="w-12 h-12" textSize="text-xl font-black tracking-tighter text-white font-sans" />
+              <FitForceLogo showText={true} iconClassName="w-12 h-12" textSize="text-xl font-black tracking-tighter text-white font-sans" />
             </Link>
 
             {/* Desktop Navigation */}

@@ -12,7 +12,7 @@ export const About: React.FC = () => {
     id: 'jijo_trainer',
     name: "Mr. Delwin Jijo",
     experience: "3+ Years Elite Coaching",
-    aboutText: "Welcome! My name is Delwin Jijo, and I am the founder and head performance coach at FITORA. For over three years, I have focused on dismantling typical corporate fitness misconceptions, replacing them with customized, periodized strength training models that generate permanent physical changes. My scientific programming model relies heavily on progressive resistance loads, metabolic triggers, and detailed macronutrient strategies that seamlessly align with high-tension schedules. Whether you are aiming to break personal lifting plateaus, lose stored fat mass sustainably, or rebuild raw functional stamina, I provide full professional accountability templates to guarantee elite status.",
+    aboutText: "Welcome! My name is Delwin Jijo, and I am the founder and head performance coach at FitForce By Jijo. For over three years, I have focused on dismantling typical corporate fitness misconceptions, replacing them with customized, periodized strength training models that generate permanent physical changes. My scientific programming model relies heavily on progressive resistance loads, metabolic triggers, and detailed macronutrient strategies that seamlessly align with high-tension schedules. Whether you are aiming to break personal lifting plateaus, lose stored fat mass sustainably, or rebuild raw functional stamina, I provide full professional accountability templates to guarantee elite status.",
     imageUrl: defaultCoachPortrait,
     instagramUrl: "https://instagram.com",
     contactEmail: "trainwithjijo@gmail.com",
@@ -165,7 +165,7 @@ export const About: React.FC = () => {
                     className="flex items-center gap-3 text-zinc-400 hover:text-red-500 transition-colors cursor-pointer"
                   >
                     <Instagram className="w-5 h-5 text-red-500 flex-shrink-0" />
-                    <span>Follow @FITORA</span>
+                    <span>Follow @FitForceByJijo</span>
                   </a>
                 )}
               </div>
@@ -265,7 +265,7 @@ export const About: React.FC = () => {
             </span>
             <h2 className="text-2xl sm:text-3xl font-black text-white mt-1">98% Retention Success</h2>
             <p className="text-zinc-500 text-xs sm:text-sm mt-3 leading-relaxed max-w-xl mx-auto">
-              Our clients stay because FITORA designs functional regimes that fit their high-intensity, demanding lifestyle. Programs aren't punishment—they are sustainable solutions.
+              Our clients stay because FitForce By Jijo designs functional regimes that fit their high-intensity, demanding lifestyle. Programs aren't punishment—they are sustainable solutions.
             </p>
           </div>
         </div>
