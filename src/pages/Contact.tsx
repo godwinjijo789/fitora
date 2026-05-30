@@ -144,7 +144,7 @@ Enquiry message:
             SCHEDULE A TRAINING TRIGGER
           </h1>
           <p className="text-zinc-500 max-w-2xl mx-auto mt-4 text-xs sm:text-sm">
-            Book your initial consultation sheet today. Mr. Delwin Jijo reviews every single inbound request personally within 24 business hours.
+            Add your initial enquiry sheet today. Coach Mr. Delwin Jijo reviews every single inbound request personally within 24 business hours.
           </p>
         </div>
 
@@ -205,10 +205,10 @@ Enquiry message:
             </div>
           </div>
 
-          {/* Column 2: Booking Form */}
+          {/* Column 2: Enquiry Form */}
           <div className="lg:col-span-7 bg-zinc-950 border border-zinc-900 rounded-3xl p-8 sm:p-10 shadow-2xl relative">
             <h3 className="text-xl font-black text-white tracking-wider mb-6 flex items-center gap-2">
-              <FileText className="w-6 h-6 text-red-600" /> BOOKING APPLICATION
+              <FileText className="w-6 h-6 text-red-600" /> ENQUIRY APPLICATION
             </h3>
 
             <form onSubmit={handleSubmit} className="flex flex-col gap-5 text-sm" id="enquiry-booking-form">
@@ -310,7 +310,7 @@ Enquiry message:
                 whileHover={{ scale: 1.01 }}
                 whileTap={{ scale: 0.99 }}
               >
-                {loading ? 'TRANSMITTING SHEET...' : 'SUBMIT PROGRAM REGISTRATION'} <Send className="w-4 h-4" />
+                {loading ? 'TRANSMITTING SHEET...' : 'SUBMIT ENQUIRY REGISTRATION'} <Send className="w-4 h-4" />
               </motion.button>
             </form>
           </div>
