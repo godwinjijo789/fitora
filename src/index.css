@@ -169,6 +169,10 @@ html.light {
     color: #09090b !important;
   }
 
+  & .about-hero-heading {
+    color: #ffffff !important;
+  }
+
   & section:first-child .text-zinc-400 {
     color: #27272a !important;
   }

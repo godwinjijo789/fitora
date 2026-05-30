@@ -128,7 +128,7 @@ export const About: React.FC = () => {
                 <span className="text-red-500 font-mono text-[10px] font-black tracking-widest uppercase">
                   ACTIVE FITNESS ADVISOR
                 </span>
-                <h1 className="text-3xl font-black tracking-tight text-white mt-1">
+                <h1 className="text-3xl font-black tracking-tight text-white mt-1 about-hero-heading">
                   {profile.name}
                 </h1>
               </div>
