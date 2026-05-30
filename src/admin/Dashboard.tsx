@@ -73,6 +73,7 @@ export const Dashboard: React.FC = () => {
   const [photoCategory, setPhotoCategory] = useState<string>('Strength Training');
   const [customCategory, setCustomCategory] = useState('');
   const [photoImageUrl, setPhotoImageUrl] = useState('');
+  const [isUploadingPhoto, setIsUploadingPhoto] = useState(false);
 
   // Add Video states
   const [videoTitle, setVideoTitle] = useState('');
@@ -120,41 +121,51 @@ export const Dashboard: React.FC = () => {
 
   const handleEditPhotoUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
-    if (file) {
-      if (file.size > 5 * 1024 * 1024) {
-        showToast('Image is too large. Please select an image under 5MB.', 'error');
-        return;
-      }
-      try {
-        showToast('Uploading image to storage...', 'info');
-        const fileRef = ref(storage, `gallery/edit_${Date.now()}_${file.name}`);
-        await uploadBytes(fileRef, file);
-        const url = await getDownloadURL(fileRef);
-        setEditPhotoImageUrl(url);
-        showToast('Image uploaded successfully.', 'success');
-      } catch (err: any) {
-        showToast(`Image upload failed: ${err.message}`, 'error');
-      }
+    if (!file) {
+      showToast('No file selected.', 'error');
+      return;
+    }
+    if (file.size > 5 * 1024 * 1024) {
+      showToast('Image is too large. Please select an image under 5MB.', 'error');
+      return;
+    }
+    try {
+      showToast('Uploading image to storage...', 'info');
+      const fileRef = ref(storage, `gallery/edit_${Date.now()}_${file.name}`);
+      await uploadBytes(fileRef, file);
+      const url = await getDownloadURL(fileRef);
+      setEditPhotoImageUrl(url);
+      showToast('Image uploaded successfully.', 'success');
+    } catch (err: any) {
+      console.error('Edit photo upload error:', err);
+      showToast(`Image upload failed: ${err.message || 'Unknown error'}`, 'error');
+    } finally {
+      e.target.value = '';
     }
   };
 
   const handleCoachPhotoUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
-    if (file) {
-      if (file.size > 5 * 1024 * 1024) {
-        showToast('Image is too large. Please select an image under 5MB.', 'error');
-        return;
-      }
-      try {
-        showToast('Uploading coach photo to storage...', 'info');
-        const fileRef = ref(storage, `coach/${Date.now()}_${file.name}`);
-        await uploadBytes(fileRef, file);
-        const url = await getDownloadURL(fileRef);
-        setCoachProfile((prev: any) => ({ ...prev, imageUrl: url }));
-        showToast('Coach photo uploaded. Press Save to synchronize.', 'success');
-      } catch (err: any) {
-        showToast(`Coach photo upload failed: ${err.message}`, 'error');
-      }
+    if (!file) {
+      showToast('No file selected.', 'error');
+      return;
+    }
+    if (file.size > 5 * 1024 * 1024) {
+      showToast('Image is too large. Please select an image under 5MB.', 'error');
+      return;
+    }
+    try {
+      showToast('Uploading coach photo to storage...', 'info');
+      const fileRef = ref(storage, `coach/${Date.now()}_${file.name}`);
+      await uploadBytes(fileRef, file);
+      const url = await getDownloadURL(fileRef);
+      setCoachProfile((prev: any) => ({ ...prev, imageUrl: url }));
+      showToast('Coach photo uploaded. Press Save to synchronize.', 'success');
+    } catch (err: any) {
+      console.error('Coach photo upload error:', err);
+      showToast(`Coach photo upload failed: ${err.message || 'Unknown error'}`, 'error');
+    } finally {
+      e.target.value = '';
     }
   };
 
@@ -341,21 +352,29 @@ export const Dashboard: React.FC = () => {
 
   const handlePhotoUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
-    if (file) {
-      if (file.size > 5 * 1024 * 1024) {
-        showToast('Image is too large. Please select an image under 5MB.', 'error');
-        return;
-      }
-      try {
-        showToast('Uploading image to storage...', 'info');
-        const fileRef = ref(storage, `gallery/${Date.now()}_${file.name}`);
-        await uploadBytes(fileRef, file);
-        const url = await getDownloadURL(fileRef);
-        setPhotoImageUrl(url);
-        showToast('Image uploaded successfully.', 'success');
-      } catch (err: any) {
-        showToast(`Image upload failed: ${err.message}`, 'error');
-      }
+    if (!file) {
+      showToast('No file selected.', 'error');
+      return;
+    }
+    if (file.size > 5 * 1024 * 1024) {
+      showToast('Image is too large. Please select an image under 5MB.', 'error');
+      return;
+    }
+    try {
+      setIsUploadingPhoto(true);
+      showToast('Uploading image to Firebase Storage...', 'info');
+      const fileRef = ref(storage, `gallery/${Date.now()}_${file.name}`);
+      await uploadBytes(fileRef, file);
+      const url = await getDownloadURL(fileRef);
+      setPhotoImageUrl(url);
+      showToast('Image uploaded successfully! Now click UPLOAD & PUBLISH button.', 'success');
+    } catch (err: any) {
+      console.error('Upload error:', err);
+      showToast(`Image upload failed: ${err.message || 'Unknown error'}`, 'error');
+    } finally {
+      setIsUploadingPhoto(false);
+      // Reset file input
+      e.target.value = '';
     }
   };
 
@@ -978,15 +997,15 @@ export const Dashboard: React.FC = () => {
                       </div>
                     ) : (
                       <label className="flex flex-col items-center justify-center w-full aspect-[16/9] bg-black hover:bg-zinc-950 border border-dashed border-zinc-800 hover:border-zinc-700 rounded-xl cursor-pointer transition-all gap-2 group p-4 text-center">
-                        <Upload className="w-8 h-8 text-zinc-500 group-hover:text-red-500 transition-colors" />
-                        <span className="text-xs text-zinc-400 group-hover:text-zinc-300 font-bold">Choose a local image photo</span>
+                        <Upload className={`w-8 h-8 ${isUploadingPhoto ? 'text-zinc-400 animate-pulse' : 'text-zinc-500 group-hover:text-red-500'} transition-colors`} />
+                        <span className="text-xs text-zinc-400 group-hover:text-zinc-300 font-bold">{isUploadingPhoto ? 'Uploading...' : 'Click to choose a local image photo'}</span>
                         <span className="text-[10px] text-zinc-600 font-mono">JPG, PNG format under 5MB size</span>
                         <input
                           type="file"
                           accept="image/*"
                           onChange={handlePhotoUpload}
                           className="hidden"
-                          required
+                          disabled={isUploadingPhoto}
                         />
                       </label>
                     )}
