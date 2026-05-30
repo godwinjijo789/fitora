@@ -172,4 +172,40 @@ html.light {
   & section:first-child .text-zinc-400 {
     color: #27272a !important;
   }
+
+  /* Toast/Alert notifications */
+  & [id^="toast-"] {
+    background-color: #ffffff !important;
+    border-color: #d1d5db !important;
+    color: #09090b !important;
+  }
+
+  & [id^="toast-"] .text-white {
+    color: #09090b !important;
+  }
+
+  & [id^="toast-"] .text-zinc-400 {
+    color: #6b7280 !important;
+  }
+
+  & [id^="toast-"] .hover\:text-white:hover {
+    color: #09090b !important;
+  }
+
+  & [id^="toast-"] .hover\:bg-zinc-800\/50:hover {
+    background-color: #e5e7eb !important;
+  }
+
+  /* Error and amber text in alerts */
+  & .text-amber-500 {
+    color: #b45309 !important;
+  }
+
+  & .bg-amber-950\/30 {
+    background-color: rgba(180, 83, 9, 0.1) !important;
+  }
+
+  & .border-amber-900\/30 {
+    border-color: rgba(120, 53, 15, 0.3) !important;
+  }
 }
