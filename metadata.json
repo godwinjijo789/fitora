@@ -1,0 +1,6 @@
+{
+  "name": "FITORA",
+  "description": "A premium dark-themed fitness trainer website with public categories (Weight Loss, Strength, Cardio), responsive exercise streaming, and zero-trust Google authentication for whitelisted admins.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

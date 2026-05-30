@@ -1,0 +1,132 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // Default deny catch-all
+    match /{document=**} {
+      allow read, write: if false;
+    }
+
+    // Helper functions
+    function isSignedIn() {
+      return request.auth != null;
+    }
+
+    function isAdmin() {
+      return isSignedIn() &&
+        (request.auth.token.email.lower() == 'godwinjijo789@gmail.com' || request.auth.token.email.lower() == 'trainwithjijo@gmail.com');
+    }
+
+    function isValidId(id) {
+      return id is string && id.size() <= 128 && id.matches('^[a-zA-Z0-9_\\-]+$');
+    }
+
+    // Validation functions
+    function isValidUser(data) {
+      return data.keys().hasAll(['uid', 'email', 'createdAt']) &&
+        data.keys().size() >= 3 &&
+        data.uid is string && data.uid.size() <= 128 &&
+        data.email is string && data.email.size() <= 256;
+    }
+
+    function isValidTrainer(data) {
+      return data.keys().hasAll(['id', 'name', 'aboutText']) &&
+        data.id is string && data.id.size() <= 128 &&
+        data.name is string && data.name.size() <= 100 &&
+        data.aboutText is string && data.aboutText.size() <= 10000;
+    }
+
+    function isValidGalleryItem(data) {
+      return data.keys().hasAll(['id', 'title', 'category', 'imageUrl', 'type', 'createdAt']) &&
+        data.id is string && data.id.size() <= 128 &&
+        data.title is string && data.title.size() <= 200 &&
+        data.category is string && data.category.size() <= 100 &&
+        data.imageUrl is string && data.imageUrl.size() <= 1500000 &&
+        data.type is string && (data.type == 'workout' || data.type == 'transformation');
+    }
+
+    function isValidVideoItem(data) {
+      return data.keys().hasAll(['id', 'title', 'videoUrl', 'createdAt']) &&
+        data.id is string && data.id.size() <= 128 &&
+        data.title is string && data.title.size() <= 200 &&
+        data.videoUrl is string && data.videoUrl.size() <= 2000 &&
+        (!data.keys().hasAny(['category']) || (data.category is string && data.category.size() <= 100)) &&
+        (!data.keys().hasAny(['description']) || (data.description is string && data.description.size() <= 2000)) &&
+        (!data.keys().hasAny(['thumbnailUrl']) || (data.thumbnailUrl is string && data.thumbnailUrl.size() <= 2000));
+    }
+
+    function isValidTestimonial(data) {
+      return data.keys().hasAll(['id', 'clientName', 'review', 'rating', 'createdAt']) &&
+        data.id is string && data.id.size() <= 128 &&
+        data.clientName is string && data.clientName.size() <= 100 &&
+        data.review is string && data.review.size() <= 2000 &&
+        data.rating is int && data.rating >= 1 && data.rating <= 5;
+    }
+
+    function isValidEnquiry(data) {
+      return data.keys().hasAll(['id', 'name', 'mobile', 'email', 'goal', 'message', 'timestamp']) &&
+        data.keys().size() == 7 &&
+        data.id is string && data.id.size() <= 128 &&
+        data.name is string && data.name.size() <= 100 &&
+        data.mobile is string && data.mobile.size() <= 20 &&
+        data.email is string && data.email.size() <= 128 &&
+        data.goal is string && data.goal.size() <= 100 &&
+        data.message is string && data.message.size() <= 5000;
+    }
+
+    function isValidHomepageContent(data) {
+      return data.keys().hasAll(['id']) &&
+        data.id is string && data.id.size() <= 128;
+    }
+
+    // Collection matches
+    match /users/{userId} {
+      allow read: if isSignedIn() && (request.auth.uid == userId || isAdmin());
+      allow create, update: if isSignedIn() && request.auth.uid == userId && isValidUser(request.resource.data);
+      allow delete: if isAdmin();
+    }
+
+    match /trainers/{trainerId} {
+      allow read: if true;
+      allow create, update: if isAdmin() && isValidTrainer(request.resource.data) && isValidId(trainerId);
+      allow delete: if isAdmin() && isValidId(trainerId);
+    }
+
+    match /gallery/{itemId} {
+      allow read: if true;
+      allow create, update: if isAdmin() && isValidGalleryItem(request.resource.data) && isValidId(itemId);
+      allow delete: if isAdmin() && isValidId(itemId);
+    }
+
+    match /videos/{videoId} {
+      allow read: if true;
+      allow create, update: if isAdmin() && isValidVideoItem(request.resource.data) && isValidId(videoId);
+      allow delete: if isAdmin() && isValidId(videoId);
+    }
+
+    match /testimonials/{testimonialId} {
+      allow read: if true;
+      allow create: if isValidTestimonial(request.resource.data) && isValidId(testimonialId);
+      allow update, delete: if isAdmin() && isValidId(testimonialId);
+    }
+
+    match /enquiries/{enquiryId} {
+      allow get: if isAdmin() && isValidId(enquiryId);
+      allow list: if isAdmin();
+      allow create: if isValidEnquiry(request.resource.data) && isValidId(enquiryId) && request.resource.data.timestamp == request.time;
+      allow update: if false; // immutable enquiries
+      allow delete: if isAdmin() && isValidId(enquiryId);
+    }
+
+    match /homepageContent/{contentId} {
+      allow read: if true;
+      allow create, update: if isAdmin() && isValidHomepageContent(request.resource.data) && isValidId(contentId);
+      allow delete: if isAdmin() && isValidId(contentId);
+    }
+
+    match /mail/{mailId} {
+      allow create: if true;
+      allow read, update, delete: if isAdmin();
+    }
+  }
+}

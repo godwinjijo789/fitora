@@ -1,0 +1,143 @@
+{
+  "entities": {
+    "User": {
+      "title": "User",
+      "description": "User account registration details.",
+      "type": "object",
+      "properties": {
+        "uid": { "type": "string" },
+        "email": { "type": "string" },
+        "displayName": { "type": "string" },
+        "photoURL": { "type": "string" },
+        "role": { "type": "string", "enum": ["admin", "client"] },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["uid", "email", "createdAt"]
+    },
+    "Trainer": {
+      "title": "Trainer",
+      "description": "Trainer details like name, experience, certifications, etc.",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "name": { "type": "string" },
+        "experience": { "type": "string" },
+        "certifications": { "type": "array" },
+        "specialization": { "type": "array" },
+        "imageUrl": { "type": "string" },
+        "contactEmail": { "type": "string" },
+        "phone": { "type": "string" },
+        "instagramUrl": { "type": "string" },
+        "aboutText": { "type": "string" },
+        "achievements": { "type": "array" }
+      },
+      "required": ["id", "name", "aboutText"]
+    },
+    "GalleryItem": {
+      "title": "GalleryItem",
+      "description": "An image item in the workout/transformation gallery.",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "title": { "type": "string" },
+        "category": { "type": "string", "enum": ["Weight Loss", "Muscle Gain", "Cardio", "Strength Training"] },
+        "imageUrl": { "type": "string" },
+        "type": { "type": "string", "enum": ["workout", "transformation"] },
+        "beforeUrl": { "type": "string" },
+        "afterUrl": { "type": "string" },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["id", "title", "category", "imageUrl", "type", "createdAt"]
+    },
+    "VideoItem": {
+      "title": "VideoItem",
+      "description": "A workout presentation video element.",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "title": { "type": "string" },
+        "category": { "type": "string" },
+        "videoUrl": { "type": "string" },
+        "thumbnailUrl": { "type": "string" },
+        "description": { "type": "string" },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["id", "title", "videoUrl", "createdAt"]
+    },
+    "Testimonial": {
+      "title": "Testimonial",
+      "description": "A client review or transformation story.",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "clientName": { "type": "string" },
+        "rating": { "type": "integer" },
+        "review": { "type": "string" },
+        "achievement": { "type": "string" },
+        "imageUrl": { "type": "string" },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["id", "clientName", "review", "rating", "createdAt"]
+    },
+    "Enquiry": {
+      "title": "Enquiry",
+      "description": "A user-submitted lead/enquiry format.",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "name": { "type": "string" },
+        "mobile": { "type": "string" },
+        "email": { "type": "string" },
+        "goal": { "type": "string" },
+        "message": { "type": "string" },
+        "timestamp": { "type": "string", "format": "date-time" }
+      },
+      "required": ["id", "name", "mobile", "email", "goal", "message", "timestamp"]
+    },
+    "HomepageContent": {
+      "title": "HomepageContent",
+      "description": "System homepage parameters managed by admin.",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "heroTitle": { "type": "string" },
+        "heroSubtitle": { "type": "string" },
+        "statsClientsCount": { "type": "string" },
+        "statsExperienceYears": { "type": "string" },
+        "statsWorkoutsTrained": { "type": "string" },
+        "highlightQuote": { "type": "string" }
+      },
+      "required": ["id"]
+    }
+  },
+  "firestore": {
+    "users": {
+      "schema": "User",
+      "description": "User profiles. Access to admin console is checked directly from the auth email in Code, but this holds profile records."
+    },
+    "trainers": {
+      "schema": "Trainer",
+      "description": "Trainer profiles details collection."
+    },
+    "gallery": {
+      "schema": "GalleryItem",
+      "description": "Workout and transformation photos gallery."
+    },
+    "videos": {
+      "schema": "VideoItem",
+      "description": "Uploaded workout videos."
+    },
+    "testimonials": {
+      "schema": "Testimonial",
+      "description": "Collection of client reviews & transformation stories."
+    },
+    "enquiries": {
+      "schema": "Enquiry",
+      "description": "Contact and fitness program inquiries submitted by clients."
+    },
+    "homepageContent": {
+      "schema": "HomepageContent",
+      "description": "Singleton or section configurations for customizable parts of the home page."
+    }
+  }
+}
