@@ -53,8 +53,10 @@ export const Footer: React.FC = () => {
               <Instagram className="w-5 h-5" />
             </a>
             <a
-              href={`mailto:${email}`}
-              className="p-2 border border-zinc-800 rounded-lg text-zinc-400 hover:text-white hover:border-red-600 transition-colors"
+              href={`https://mail.google.com/mail/?view=cm&fs=1&to=${email}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="p-2 border border-zinc-800 rounded-lg text-zinc-400 hover:text-white hover:hover:border-red-600 transition-colors"
               title="Send Mail"
               id="email-footer-link"
             >
@@ -93,7 +95,7 @@ export const Footer: React.FC = () => {
           </div>
           <div className="flex gap-3 text-sm">
             <Mail className="w-5 h-5 text-red-500 flex-shrink-0" />
-            <a href={`mailto:${email}`} className="hover:text-red-500 transition-colors">{email}</a>
+            <a href={`https://mail.google.com/mail/?view=cm&fs=1&to=${email}`} target="_blank" rel="noopener noreferrer" className="hover:text-red-500 transition-colors">{email}</a>
           </div>
           <div className="flex gap-3 text-sm leading-snug">
             <MapPin className="w-5 h-5 text-red-500 flex-shrink-0" />
