@@ -18,7 +18,7 @@ export const Contact: React.FC = () => {
 
   const [phone, setPhone] = useState('+91 73585 70962');
   const [email, setEmail] = useState('trainwithjijo@gmail.com');
-  const [location, setLocation] = useState("Padur, Kelambakkam, TamilNadu, India");
+  const [location, setLocation] = useState("Sholinganallur, Chennai, TamilNadu, India");
   const [web3FormsKey, setWeb3FormsKey] = useState<string>('');
 
   useEffect(() => {

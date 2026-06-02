@@ -100,7 +100,7 @@ export const Dashboard: React.FC = () => {
     highlightQuote: 'True athleticism isn\'t about exhausting yourself in a single session.',
     contactPhone: '+91 7358570962',
     contactEmail: 'trainwithjijo@gmail.com',
-    contactLocation: "Padur, Kelambakkam, TamilNadu, India",
+    contactLocation: "Sholinganallur, Chennai, TamilNadu, India",
     instagramUrl: 'https://instagram.com/jijo',
     whatsappNumber: '+91 73585 70962',
     web3FormsKey: ''

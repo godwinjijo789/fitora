@@ -18,7 +18,7 @@ export const About: React.FC = () => {
     contactEmail: "trainwithjijo@gmail.com",
     phone: "+91 98765 43210",
     whatsappNumber: "919876543210",
-    location: "Padur, Kelambakkam, TamilNadu, India"
+    location: "Sholinganallur, Chennai, TamilNadu, India"
   };
 
   const [profile, setProfile] = useState<TrainerProfile>(defaultTrainer);
@@ -146,7 +146,7 @@ export const About: React.FC = () => {
                 </div>
                 <div className="flex items-center gap-3">
                   <MapPin className="w-5 h-5 text-red-500 flex-shrink-0" />
-                  <span>{profile.location || "Padur, Kelambakkam, TamilNadu, India"}</span>
+                  <span>{profile.location || "Sholinganallur, Chennai, TamilNadu, India"}</span>
                 </div>
                 {profile.phone && (
                   <a

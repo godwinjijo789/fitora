@@ -8,7 +8,7 @@ import { FitForceLogo } from './FitForceLogo';
 export const Footer: React.FC = () => {
   const [phone, setPhone] = useState('+91 73585 70962');
   const [email, setEmail] = useState('trainwithjijo@gmail.com');
-  const [location, setLocation] = useState("Padur, Kelambakkam, TamilNadu, India");
+  const [location, setLocation] = useState("Sholinganallur, Chennai, TamilNadu, India");
   const [instagram, setInstagram] = useState('https://instagram.com');
 
   useEffect(() => {
