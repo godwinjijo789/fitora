@@ -9,6 +9,7 @@ import { Gallery } from './pages/Gallery';
 import { Contact } from './pages/Contact';
 import { AdminLogin } from './pages/AdminLogin';
 import { AccessDenied } from './pages/AccessDenied';
+import { DeveloperSupport } from './pages/DeveloperSupport';
 import { Dashboard } from './admin/Dashboard';
 import { ProtectedRoute } from './components/ProtectedRoute';
 
@@ -26,8 +27,7 @@ export default function App() {
                 <Route path="testimonials" element={<Navigate to="/about" replace />} />
                 <Route path="gallery" element={<Gallery />} />
                 <Route path="contact" element={<Contact />} />
-                <Route path="admin/login" element={<AdminLogin />} />
-                <Route path="access-denied" element={<AccessDenied />} />
+                <Route path="admin/login" element={<AdminLogin />} />              <Route path="developer-support" element={<DeveloperSupport />} />                <Route path="access-denied" element={<AccessDenied />} />
               </Route>
 
               {/* Protected dashboard layer, enforcing email credentials list */}
