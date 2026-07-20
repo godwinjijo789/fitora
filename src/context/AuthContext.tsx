@@ -24,7 +24,19 @@ export const AuthProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
       setLoading(true);
       if (currentUser) {
         const email = currentUser.email?.toLowerCase().trim() || "";
-        const isUserAdmin = adminEmails.map(e => e.toLowerCase().trim()).includes(email);
+        console.log('Checking auth for email:', email);
+        console.log('Admin emails list:', adminEmails);
+        
+        // Defensive: if no email, definitely not admin
+        if (!email) {
+          console.log('No email, not admin');
+          await signOut(auth);
+          return;
+        }
+
+        const adminEmailsNormalized = adminEmails.map(e => e.toLowerCase().trim());
+        const isUserAdmin = adminEmailsNormalized.includes(email);
+        console.log('Is user admin:', isUserAdmin);
 
         if (isUserAdmin) {
           setUser(currentUser);

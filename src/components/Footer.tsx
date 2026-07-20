@@ -112,13 +112,7 @@ export const Footer: React.FC = () => {
         {/* Support -> Admin Login demanded below the footer */}
         <div className="flex flex-col items-center gap-2 text-zinc-600 font-medium">
           <span>Support</span>
-          <Link
-            to="/admin/login"
-            id="support-admin-login"
-            className="text-zinc-500 hover:text-red-500 transition-colors py-1 px-2 border border-zinc-900 bg-zinc-950/40 rounded hover:border-red-950 hover:bg-red-950/20 font-mono font-bold tracking-wider"
-          >
-            ADMIN LOGIN
-          </Link>
+          
           <Link
             to="/developer-support"
             id="developer-support-btn"
